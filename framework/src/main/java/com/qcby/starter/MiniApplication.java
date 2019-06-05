@@ -1,5 +1,8 @@
 package com.qcby.starter;
 
+import com.qcby.web.server.TomcatServer;
+import org.apache.catalina.LifecycleException;
+
 /**
  * @author kevinlyz
  * @ClassName MiniApplication
@@ -9,5 +12,11 @@ package com.qcby.starter;
 public class MiniApplication {
     public static void run(Class<?> cls,String[] args){
         System.out.println("Hello mini-spring application！");
+        TomcatServer tomcatServer = new TomcatServer(args);
+        try {
+            tomcatServer.startServer();
+        } catch (LifecycleException e) {
+            e.printStackTrace();
+        }
     }
 }
