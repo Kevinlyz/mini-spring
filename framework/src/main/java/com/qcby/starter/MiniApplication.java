@@ -1,7 +1,10 @@
 package com.qcby.starter;
 
+import com.qcby.core.ClassScanner;
+import com.qcby.web.handler.HandlerManagger;
 import com.qcby.web.server.TomcatServer;
-import org.apache.catalina.LifecycleException;
+
+import java.util.List;
 
 /**
  * @author kevinlyz
@@ -15,7 +18,10 @@ public class MiniApplication {
         TomcatServer tomcatServer = new TomcatServer(args);
         try {
             tomcatServer.startServer();
-        } catch (LifecycleException e) {
+            List<Class<?>> classList = ClassScanner.scannClasses(cls.getPackage().getName());
+            classList.forEach(it->System.out.println(it.getName()));
+            HandlerManagger.resolveMappingHandler(classList);
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

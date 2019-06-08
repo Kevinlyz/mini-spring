@@ -1,6 +1,6 @@
 package com.qcby.web.server;
 
-import com.qcby.web.servlet.TestServlet;
+import com.qcby.web.servlet.DispatcherServlet;
 import org.apache.catalina.Context;
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.core.StandardContext;
@@ -23,16 +23,16 @@ public class TomcatServer {
     public void startServer() throws LifecycleException {
         //实例化tomcat
         tomcat = new Tomcat();
-        tomcat.setPort(8899);
+        tomcat.setPort(9999);
         tomcat.start();
         //实例化context容器
         Context context = new StandardContext();
         context.setPath("");
         context.addLifecycleListener(new Tomcat.FixContextListener());
-        TestServlet testServlet = new TestServlet();
-        Tomcat.addServlet(context,"testServlet",testServlet).setAsyncSupported(true);
+        DispatcherServlet servlet = new DispatcherServlet();
+        Tomcat.addServlet(context,"dispatcherServlet",servlet).setAsyncSupported(true);
         //添加映射
-        context.addServletMappingDecoded("/test.json","testServlet");
+        context.addServletMappingDecoded("/","dispatcherServlet");
         tomcat.getHost().addChild(context);
 
         //设置常驻线程防止tomcat中途退出
