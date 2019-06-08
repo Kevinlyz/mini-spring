@@ -9,7 +9,7 @@ import org.apache.catalina.startup.Tomcat;
 /**
  * @author kevinlyz
  * @ClassName TomcatServer
- * @Description 集成Tomcat服务器
+ * @Description 集成Tomcat服务器，将请求转发至DispatcherServlet
  * @Date 2019-06-05 13:10
  **/
 public class TomcatServer {

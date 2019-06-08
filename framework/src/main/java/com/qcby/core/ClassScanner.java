@@ -12,7 +12,7 @@ import java.util.jar.JarFile;
 /**
  * @author kevinlyz
  * @ClassName ClassScanner
- * @Description 通过类加载器
+ * @Description 通过类加载器获取目录下的类列表
  * @Date 2019-06-08 17:26
  **/
 public class ClassScanner {
