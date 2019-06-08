@@ -18,6 +18,7 @@ public class UserController {
     @RequestMapping("/test")
     public String test(@RequestParam("name") String name,@RequestParam("desc") String desc){
         System.out.println("test访问了！");
+
         return "hello controller!";
     }
 }

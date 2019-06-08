@@ -10,7 +10,7 @@ import java.lang.reflect.InvocationTargetException;
 /**
  * @author kevinlyz
  * @ClassName TestServlet
- * @Description
+ * @Description 处理请求，拦截和匹配，若不存在对应uri则直接返回
  * @Date 2019-06-05 13:28
  **/
 public class DispatcherServlet implements Servlet {

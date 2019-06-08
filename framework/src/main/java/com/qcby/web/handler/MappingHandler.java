@@ -11,7 +11,7 @@ import java.lang.reflect.Method;
 /**
  * @author kevinlyz
  * @ClassName MappingHandler
- * @Description TODO
+ * @Description 包含uri，类的方法信息，类信息和参数
  * @Date 2019-06-08 18:32
  **/
 public class MappingHandler {
