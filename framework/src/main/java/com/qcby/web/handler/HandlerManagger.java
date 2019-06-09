@@ -25,7 +25,7 @@ public class HandlerManagger {
                 presentHandlerFromController(cls);
             }
         }
-    }
+}
 
     private static void presentHandlerFromController(Class<?> cls) {
         //获取方法
@@ -46,7 +46,5 @@ public class HandlerManagger {
            MappingHandler mappingHandler = new MappingHandler(uri,method,cls,params);
            HandlerManagger.mappingHandlerList.add(mappingHandler);
         }
-
     }
-
 }

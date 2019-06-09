@@ -1,5 +1,6 @@
 package com.qcby.starter;
 
+import com.qcby.beans.BeanFactory;
 import com.qcby.core.ClassScanner;
 import com.qcby.web.handler.HandlerManagger;
 import com.qcby.web.server.TomcatServer;
@@ -19,6 +20,7 @@ public class MiniApplication {
         try {
             tomcatServer.startServer();
             List<Class<?>> classList = ClassScanner.scannClasses(cls.getPackage().getName());
+            BeanFactory.initBean(classList);
             classList.forEach(it->System.out.println(it.getName()));
             HandlerManagger.resolveMappingHandler(classList);
         } catch (Exception e) {
