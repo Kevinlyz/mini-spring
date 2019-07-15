@@ -23,6 +23,7 @@ public class ClassScanner {
         //获取类加载器
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         Enumeration<URL> resources = classLoader.getResources(path);
+
         while (resources.hasMoreElements()){
             URL resource = resources.nextElement();
             //处理资源类型是jar包的情况

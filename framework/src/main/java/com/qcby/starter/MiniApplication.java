@@ -21,7 +21,7 @@ public class MiniApplication {
             tomcatServer.startServer();
             List<Class<?>> classList = ClassScanner.scannClasses(cls.getPackage().getName());
             BeanFactory.initBean(classList);
-            classList.forEach(it->System.out.println(it.getName()));
+            //classList.forEach(it->System.out.println(it.getName()));
             HandlerManagger.resolveMappingHandler(classList);
         } catch (Exception e) {
             e.printStackTrace();

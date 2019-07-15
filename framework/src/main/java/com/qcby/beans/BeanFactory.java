@@ -28,26 +28,33 @@ public class BeanFactory {
    //初始化
     public static void initBean(List<Class<?>> classList) throws Exception {
         List<Class<?>> toCreate = new ArrayList<>(classList);
-        System.out.println("remainSize>>>>>"+toCreate);
+//        System.out.println("remainSize>>>>>"+toCreate);
         //循环实例化bean，判断是否存在循环依赖
         while (toCreate.size() != 0){
+            System.out.println("执行一次while循环");
             int remainSize = toCreate.size();
             for (int i=0;i<toCreate.size();i++){
+                System.out.println(toCreate.size());
+                System.err.println(i);
+                System.out.println(toCreate.get(i));
                 if (finishCreate(toCreate.get(i))){
+                    System.err.println("remove  "+toCreate.get(i));
                     toCreate.remove(i);
                 }
+                System.out.println("removed size:"+toCreate.size()+"\n");
             }
             if (toCreate.size() == remainSize){         //陷入死循环，抛出异常
-                System.out.println("remainSize>>>>>"+remainSize);
-                System.out.println("toCreate.size()>>>>"+toCreate.size());
-                System.out.println(toCreate.get(0).toString());
+                System.out.println(toCreate.size());
+                System.out.println(toCreate.toString());
                 throw new Exception("循环依赖异常");
             }
         }
+        System.out.println("执行完毕后的size>>>>>>"+toCreate.size());
     }
 
     //创建bean
     private static boolean finishCreate(Class<?> cls) throws IllegalAccessException, InstantiationException {
+
         //不是bean直接返回true并删除
         if (!cls.isAnnotationPresent(Bean.class) && !cls.isAnnotationPresent(Controller.class)){
             return true;
