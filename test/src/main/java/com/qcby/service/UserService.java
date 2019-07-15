@@ -1,5 +1,6 @@
 package com.qcby.service;
 
+import com.qcby.beans.Autowired;
 import com.qcby.beans.Bean;
 
 /**
@@ -10,6 +11,7 @@ import com.qcby.beans.Bean;
  **/
 @Bean
 public class UserService {
+
 
     public String getInfo(String name){
         return name+" is handsome!!";
